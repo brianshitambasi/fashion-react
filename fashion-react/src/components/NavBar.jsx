@@ -31,85 +31,60 @@ const NavBar = () => {
 
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto align-items-center">
-            {/* Always Visible */}
-            <li className="nav-item">
-              <Link className="nav-link text-dark fw-semibold" to="/">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link text-dark fw-semibold" to="/about">
-                About
-              </Link>
-            </li>
+
+            {/* Show Home/About ONLY if not logged in */}
+            {!user && (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link text-dark fw-semibold" to="/">
+                    Home
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link text-dark fw-semibold" to="/about">
+                    About
+                  </Link>
+                </li>
+              </>
+            )}
 
             {/* If user is logged in */}
             {user ? (
               <>
-                {/* Customer */}
-                {user.role === "customer" && (
-                  <>
-                    <li className="nav-item">
-                      <Link
-                        className="nav-link text-dark fw-semibold"
-                        to="/bookings"
-                      >
-                        My Bookings
-                      </Link>
-                    </li>
-                    <li className="nav-item">
-                      <Link
-                        className="nav-link text-dark fw-semibold"
-                        to="/profile"
-                      >
-                        Profile
-                      </Link>
-                    </li>
-                  </>
-                )}
-
-                {/* Shop Owner */}
+                {/* SHOP OWNER */}
                 {user.role === "shop" && (
-                  <>
-                    <li className="nav-item">
-                      <Link
-                        className="nav-link text-dark fw-semibold"
-                        to="/admin/dashboard"
-                      >
-                        Shop Dashboard
-                      </Link>
-                    </li>
-                    <li className="nav-item">
-                      <Link
-                        className="nav-link text-dark fw-semibold"
-                        to="/admin/bookings"
-                      >
-                        Bookings
-                      </Link>
-                    </li>
-                  </>
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link text-dark fw-semibold"
+                      to="/shopowner-dashboard"
+                    >
+                      Shop Dashboard
+                    </Link>
+                  </li>
                 )}
 
-                {/* Admin */}
+                {/* ADMIN */}
                 {user.role === "admin" && (
-                  <>
-                    <li className="nav-item">
-                      <Link
-                        className="nav-link text-dark fw-semibold"
-                        to="/admin/dashboard"
-                      >
-                        Admin Dashboard
-                      </Link>
-                    </li>
-                    <li className="nav-item">
-                      <Link
-                        className="nav-link text-dark fw-semibold"
-                        to="/admin/shops"
-                      >
-                        Manage Shops
-                      </Link>
-                    </li>
-                  </>
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link text-dark fw-semibold"
+                      to="/admin/dashboard"
+                    >
+                      Admin Dashboard
+                    </Link>
+                  </li>
+                )}
+
+                {/* CUSTOMER */}
+                {user.role === "customer" && (
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link text-dark fw-semibold"
+                      to="/bookings"
+                    >
+                      My Bookings
+                    </Link>
+                  </li>
                 )}
 
                 {/* User Dropdown */}

@@ -20,8 +20,8 @@ const LoginComponent = () => {
     try {
       const data = { email, password };
 
-      // 🔗 Replace with your Looks Nairobi backend login endpoint
-      const res = await axios.post('https://fashion2-sx2l.onrender.com/user/Auth/login', data);
+      // 🔗 Your backend login endpoint
+      const res = await axios.post('http://localhost:3002/user/login', data);
 
       const { token, user } = res.data;
 
@@ -31,7 +31,7 @@ const LoginComponent = () => {
         return;
       }
 
-      // Save user data and token in context + local storage
+      // ✅ Save token + user
       setToken(token);
       setUser(user);
       localStorage.setItem('token', token);
@@ -39,13 +39,13 @@ const LoginComponent = () => {
 
       setLoading('');
 
-      // 🧭 Redirect based on user role
+      // 🧭 Redirect based on role
       switch (user.role) {
         case 'admin':
-          navigate('/admin');
+          navigate('/admin/dashboard');
           break;
         case 'shop':
-          navigate('/shop-dashboard');
+          navigate('/shopowner-dashboard'); // 👈 redirect shop owner here
           break;
         case 'customer':
           navigate('/customer-dashboard');

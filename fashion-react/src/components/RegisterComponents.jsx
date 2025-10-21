@@ -27,7 +27,7 @@ const RegisterComponent = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post("https://fashion2-sx2l.onrender.com/register", form);
+      const res = await axios.post("http://localhost:3002/user/register", form);
       if (res.data.success) {
         setSuccess("Registration successful! Redirecting to login...");
         setTimeout(() => navigate("/login"), 2000);

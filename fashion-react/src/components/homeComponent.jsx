@@ -11,7 +11,7 @@ const HomeComponent = () => {
         <div className="container position-relative z-2 py-5">
           <h1 className="display-3 fw-bold mb-3">Style Meets Simplicity</h1>
           <p className="lead mb-4 fs-5">
-            Discover Nairobi’s best salons and barbershops.  
+            Discover Nairobi’s best salons and barbershops home of beauty.  
             Book your next look with just a click.
           </p>
           <Link to="/login" className="btn btn-primary btn-lg px-5 py-3 shadow fw-semibold">
